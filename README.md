@@ -1,57 +1,237 @@
-# SP-Packages
+# **LintRC**
 
-A simple Node.js package template.
+_A lightweight CLI tool for running multiple linters efficiently._
 
-## Installation
+![npm](https://img.shields.io/npm/v/@sp-packages/lintrc)
+![npm](https://img.shields.io/npm/dw/@sp-packages/lintrc)
+![License](https://img.shields.io/npm/l/@sp-packages/lintrc)
+![Build](https://github.com/SP-Packages/lintrc/actions/workflows/release.yml/badge.svg)
+![TypeScript](https://img.shields.io/badge/Made%20with-TypeScript-blue.svg)
+![Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-To install globally:
+## **✨ Features**
+
+- 🔍 **Detects file types and applies appropriate linters automatically**
+- 🛠 **Supports multiple linters** (ESLint, Prettier, PHPStan, PHPCS, Markdownlint, etc.)
+- 🚀 **Parallel execution** for improved performance
+- 📜 **Customizable config file (`.lintrc.json`)**
+- ✅ **Runs only on Git-tracked files by default**
+- 🏗 **Ideal for CI/CD pipelines and local development**
+
+---
+
+## **📦 Installation**
+
+### **Global Installation** (For system-wide CLI use)
 
 ```sh
-npm install -g @sp-packages/package-name
+npm install -g @sp-packages/lintrc
 ```
 
-To install as a development dependency:
+This allows you to use `lintrc` globally in your terminal.
+
+### **Local Installation** (For project-specific use)
 
 ```sh
-npm install --save-dev @sp-packages/package-name
+npm install @sp-packages/lintrc --save-dev
 ```
 
-## Usage
-
-### Command Line
-
-Run the following command in your terminal:
+Then, run it via:
 
 ```sh
-package-name <options>
+npx lintrc
 ```
+
+---
+
+## **🚀 CLI Usage**
+
+### **Basic Usage**
+
+```sh
+lintrc [options]
+```
+
+#### **Options:**
+
+```sh
+lintrc -h
+Usage: LintRC [options] [files...]
+
+LintRC - A CLI tool for running linters based on file extensions.
+
+Arguments:
+files List of files to lint. If omitted, uses Git-tracked files.
+
+Options:
+-V, --version output the version number
+-c, --config <config> Path to the configuration file (default: .lintrc.json)
+-e, --ext <ext...> Optionally limit the linter to specific extensions
+-q, --quiet Disable output
+-v, --verbose Enable verbose logging
+-h, --help display help for command
+```
+
+#### **Examples:**
+
+```sh
+lintrc --ext js,ts,php
+lintrc --config custom-lintrc.json --verbose
+```
+
+---
+
+## **📜 Programmatic Usage (Inside Node.js)**
+
+You can also use `lintrc` inside your JavaScript/TypeScript projects.
+
+### **Import and Use in Your Project**
+
+```ts
+import { lintrc } from "@sp-packages/lintrc";
+
+lintrc({ verbose: true });
+```
+
+---
+
+## **⚙️ Configuration (`.lintrc.json`)**
+
+By default, `lintrc` will look for a `.lintrc.json` file in your project's root directory. You can customize it as follows:
+
+The `.lintrc.json` configuration file allows you to define the tools and file type mappings for `lintrc`. Below is an example configuration and explanation of its keys:
+
+### **TOOLS**
+
+The `TOOLS` section defines the linters and their configurations. Each tool has the following properties:
+
+- `title`: The display name of the tool.
+- `type`: The type of package manager used (`npm` or `composer`).
+- `command`: The command to run the linter.
+- `args`: An array of arguments to pass to the command.
+- `behavior`: The behavior of the tool (`error` or `warn`).
+- `priority`: The priority of the tool execution (lower number means higher priority).
 
 Example:
 
+```json
+{
+  "TOOLS": {
+    "CSPELL": {
+      "title": "cSpell",
+      "type": "npm",
+      "command": "cspell",
+      "args": ["--no-progress", "--no-summary"],
+      "behavior": "warn",
+      "priority": 4
+    },
+    "ESLINT": {
+      "title": "ESLint",
+      "type": "npm",
+      "command": "eslint",
+      "args": ["--fix"],
+      "behavior": "error",
+      "priority": 2
+    },
+    "PHPCS": {
+      "title": "PHP Code Sniffer",
+      "type": "composer",
+      "command": "phpcs",
+      "behavior": "error",
+      "priority": 3
+    },
+    "PRETTIER": {
+      "title": "Prettier",
+      "type": "npm",
+      "command": "prettier",
+      "args": ["--write"],
+      "behavior": "error",
+      "priority": 1
+    }
+  }
+}
+```
+
+### **MAPPING**
+
+The `MAPPING` section defines which tools to run based on file extensions. Each key is a file extension, and the value is an array of tool identifiers from the `TOOLS` section.
+
+Example:
+
+```json
+{
+  "MAPPING": {
+    "php": ["PHPCS"],
+    "js": ["ESLINT", "PRETTIER"],
+    "jsx": ["ESLINT", "PRETTIER"],
+    "ts": ["ESLINT", "PRETTIER"],
+    "*": ["CSPELL"]
+  }
+}
+```
+
+In this example:
+
+- PHP files (`.php`) will be checked with `PHPCS`.
+- JavaScript files (`.js`) and TypeScript files (`.ts`) will be checked with `ESLINT` and `PRETTIER`.
+- All files (`*`) will be checked with `CSPELL`.
+
+This configuration allows `lintrc` to automatically apply the appropriate linters based on the file types in your project.
+
+---
+
+## **🎯 Example Outputs**
+
 ```sh
-package-name 'value'
+############################################################
+ Running LintRC
+############################################################
+**************************************************
+ ESLint
+**************************************************
+✔ [SUCCESS] Successfully Completed.
+**************************************************
+ PHP Code Sniffer
+**************************************************
+❌ [ERROR] Failed to complete.
+**************************************************
+ Prettier
+**************************************************
+✔ [SUCCESS] Successfully Completed.
+**************************************************
+ cSpell
+**************************************************
+⚠ [WARNING] Failed with warnings.
+**************************************************
+ LintRC Results
+**************************************************
+✔ [SUCCESS] ESLint: Passed
+❌ [ERROR] PHP Code Sniffer: Failed
+✔ [SUCCESS] Prettier: Passed
+⚠ [WARNING] cSpell: Issues found
+############################################################
+ LintRC Summary
+############################################################
+❌ [ERROR] LintRC completed with errors.
 ```
 
-or using npx:
+---
 
-```sh
-npx package-name 'value'
-```
+## **💡 Use Cases**
 
-### Importing in Your Module
+- **CI/CD Pipelines** – Automate code quality checks in your workflows.
+- **Pre-Commit Hooks** – Integrate with `husky` to enforce coding standards.
+- **Local Development** – Run linters before pushing code changes.
 
-You can also import and use it in your Node.js project:
+---
 
-```js
-import { functionName } from "@sp-packages/package-name";
-
-functionName();
-```
-
-## Contributing
+## **🤝 Contributing**
 
 Contributions are welcome! Please open an issue or submit a pull request on GitHub.
 
-## License
+---
+
+## **📜 License**
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
