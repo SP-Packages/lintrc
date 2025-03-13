@@ -1,12 +1,6 @@
 export default {
   branches: ["main"],
-  repositoryUrl: "https://github.com/SP-Packages/printer.git",
-  prepare: [
-    {
-      path: "@semantic-release/exec",
-      cmd: "zip -r dist.zip dist/",
-    },
-  ],
+  repositoryUrl: "https://github.com/SP-Packages/lintrc.git",
   plugins: [
     [
       "@semantic-release/commit-analyzer",

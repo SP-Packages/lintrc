@@ -3,3 +3,8 @@ senthilprabu
 ponnusamy
 commitlint
 conventionalcommits
+lintrc
+PHPCBF
+PHPCS
+PHPCSFIXER
+PHPSTAN
