@@ -54,23 +54,18 @@ async function executeCommandBuffered(commandDetails: Command): Promise<CommandR
       if (code === 0) {
         resolve({ title, status: "success", output: stdoutBuffer.trim() });
         Printer.success("Successfully Completed.");
-        if (message) {
-          Printer.log(message.trim());
-        }
       } else {
         if (behavior === "warn") {
           resolve({ title, status: "warning", output: stderrBuffer.trim() || "Warning" });
           Printer.warning("Failed with warnings.");
-          if (message) {
-            Printer.log(message.trim());
-          }
         } else {
           resolve({ title, status: "error", output: stderrBuffer.trim() || "Error" });
           Printer.error("Failed to complete.");
-          if (message) {
-            Printer.log(message.trim());
-          }
         }
+      }
+      if (message) {
+        Printer.log(`${cmd}`);
+        Printer.log(message.trim());
       }
     });
   });
