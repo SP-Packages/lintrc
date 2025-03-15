@@ -15,15 +15,14 @@ export async function lintrc(
   config: Config,
   options: LintRCOptions,
 ): Promise<void> {
-  const { ext = [] } = options;
-
   Printer.header("Running LintRC");
+
+  const { ext = [] } = options;
+  const toolResults: CommandResult[] = [];
 
   let filesToLint = files.length > 0 ? files : getGitTrackedFiles();
   filesToLint = filesToLint.filter(existsSync);
   const tools = getToolsByExtension(filesToLint, config, ext);
-
-  const toolResults: CommandResult[] = [];
 
   if (Object.keys(tools).length === 0) {
     Printer.error("No matching tools found. Skipping checks.");
