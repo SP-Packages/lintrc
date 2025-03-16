@@ -40,11 +40,13 @@
   },
   "depcheck": {
     "ignores": [
+      "codecov",
       "conventional-changelog-conventionalcommits",
       "cspell",
       "depcheck",
       "husky",
       "semantic-release",
+      "markdownlint-cli",
       "@commitlint/config-conventional",
       "@semantic-release/changelog",
       "@semantic-release/commit-analyzer",
@@ -53,19 +55,13 @@
       "@semantic-release/npm",
       "@semantic-release/release-notes-generator",
       "@semantic-release/github",
-      "@types/node"
+      "@types/node",
+      "@vitest/coverage-v8"
     ]
   },
   "lint-staged": {
-    "**/*.{js,ts}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "**/*.{json,md}": [
-      "prettier --write"
-    ],
     "*": [
-      "npm run cspell"
+      "npx lintrc --verbose"
     ]
   },
   "dependencies": {
@@ -100,6 +96,7 @@
     "globals": "^16.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
+    "markdownlint-cli": "^0.44.0",
     "prettier": "^3.5.3",
     "semantic-release": "^24.2.3",
     "typescript": "^5.8.2",
@@ -114,6 +111,7 @@
     "prepare": "husky install",
     "prettier:write": "prettier --write",
     "depkit": "npx depkit",
+    "lintrc": "npx lintrc",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage"
