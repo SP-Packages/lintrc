@@ -18,7 +18,8 @@ jobs:
 
   prepare:
     needs: analyze
-    uses: SP-Packages/actions/.github/workflows/semantic-release.yml@main
+    uses: SP-Packages/actions/.github/workflows/semantic-release.yml@b6cd5b312e9003b9f5900bded86f1cbc2d7f72ab
+
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
