@@ -1,7 +1,7 @@
 {
   "name": "@sp-packages/lintrc",
   "description": "A lightweight CLI tool for running multiple linters efficiently.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "license": "MIT",
   "author": {

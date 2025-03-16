@@ -1,3 +1,15 @@
+## [1.2.0](https://github.com/SP-Packages/lintrc/compare/v1.1.0...v1.2.0) (2025-03-16)
+
+### Features
+
+* **dependencies:** add depkit and update printer package version ([5e45f45](https://github.com/SP-Packages/lintrc/commit/5e45f45bec95f4c39233dcca8e89325cd1c3c56c))
+* **dependencies:** add lintrc package to itself ([16775ca](https://github.com/SP-Packages/lintrc/commit/16775ca9c768ca7fc609fdad68c6d77a53399639))
+* **linting:** add markdownlint and lintrc configuration files ([d8d14ab](https://github.com/SP-Packages/lintrc/commit/d8d14ab37b70cadf4e72e1b0a333cf53d91136ae))
+
+### Bug Fixes
+
+* **readme:** streamline badge links for better readability ([6d92da1](https://github.com/SP-Packages/lintrc/commit/6d92da1350cbd8d3857aa061aa4b4d047e33ab0c))
+
 ## [1.1.0](https://github.com/SP-Packages/lintrc/compare/v1.0.0...v1.1.0) (2025-03-15)
 
 ### Features
