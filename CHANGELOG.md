@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/SP-Packages/lintrc/compare/v1.2.0...v1.2.1) (2025-03-22)
+
+### Bug Fixes
+
+* **core:** update printer dependency to version 2.4.0 and log command ([b8c4e14](https://github.com/SP-Packages/lintrc/commit/b8c4e14a8e7677c2574a1582019523a45f4d064f))
+
 ## [1.2.0](https://github.com/SP-Packages/lintrc/compare/v1.1.0...v1.2.0) (2025-03-16)
 
 ### Features
