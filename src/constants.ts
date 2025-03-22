@@ -20,6 +20,7 @@ export const DEFAULT_CONFIG: Config = {
       command: "cspell",
       args: ["--no-progress", "--no-summary"],
       behavior: "warn",
+      ignoreFiles: ["composer.lock", "package-lock.json"],
       priority: 8,
     },
     ESLINT: {

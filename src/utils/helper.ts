@@ -122,11 +122,15 @@ export function getToolsByExtension(files: string[], config: Config, ext: string
     Object.entries(toolsToLint)
       .filter(([tool]) => TOOLS[tool])
       .map(([tool, fileList]) => {
+        const filteredFiles = fileList.filter((file) => !TOOLS[tool].ignoreFiles?.includes(file));
+        // If no files are found after filtering, add "." as a placeholder
+        // This ensures the tool can still run without failing due to missing files
+        if (filteredFiles.length === 0) filteredFiles.push(".");
         return [
           tool,
           {
             ...TOOLS[tool],
-            files: TOOLS[tool].includeFiles === false ? [] : fileList,
+            files: TOOLS[tool].includeFiles === false ? [] : filteredFiles,
           },
         ];
       }),
