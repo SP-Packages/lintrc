@@ -63,8 +63,8 @@ async function executeCommandBuffered(commandDetails: Command): Promise<CommandR
           Printer.error("Failed to complete.");
         }
       }
+      Printer.log(`${cmd}`);
       if (message) {
-        Printer.log(`${cmd}`);
         Printer.log(message.trim());
       }
     });
