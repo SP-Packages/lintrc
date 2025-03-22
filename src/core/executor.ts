@@ -16,12 +16,15 @@ const limit = pLimit(CONCURRENCY_LIMIT);
 async function executeCommandBuffered(commandDetails: Command): Promise<CommandResult> {
   const { title, type, command, args, files, behavior, requires } = commandDetails;
   if ((requires && !isToolAvailable(requires)) || !isToolAvailable(command)) {
-    Printer.subheader(title);
+    Printer.log(title, "subheader");
     const message = `Skipping ${title}: Required tool '${requires || command}' not found.`;
     if (behavior === "warn") {
-      Printer.warning(message);
+      Printer.log(message, "warning");
       return { title, status: "warning", output: `Missing tool: ${requires || command}` };
     } else {
+      if (!Printer.isVerbose) {
+        Printer.plainSubheader(title);
+      }
       Printer.error(message);
       return { title, status: "error", output: `Missing tool: ${requires || command}` };
     }
@@ -48,24 +51,29 @@ async function executeCommandBuffered(commandDetails: Command): Promise<CommandR
     });
 
     childProcess.on("close", (code) => {
-      Printer.subheader(title);
+      Printer.log(title, "subheader");
       message = stdoutBuffer + stderrBuffer;
 
       if (code === 0) {
-        resolve({ title, status: "success", output: stdoutBuffer.trim() });
-        Printer.success("Successfully Completed.");
+        resolve({ title, status: "success", output: message.trim() || "Success" });
+        Printer.log(`${title}- Successfully Completed.`, "success");
+        Printer.log(`${cmd}`);
+        Printer.log(message.trim());
       } else {
         if (behavior === "warn") {
-          resolve({ title, status: "warning", output: stderrBuffer.trim() || "Warning" });
-          Printer.warning("Failed with warnings.");
+          resolve({ title, status: "warning", output: message.trim() || "Warning" });
+          Printer.log(`${title}- Failed with warnings.`, "warning");
+          Printer.log(`${cmd}`);
+          Printer.log(message.trim());
         } else {
-          resolve({ title, status: "error", output: stderrBuffer.trim() || "Error" });
-          Printer.error("Failed to complete.");
+          resolve({ title, status: "error", output: message.trim() || "Error" });
+          Printer.log(`${title}- Failed to complete.`, "error");
+          Printer.log(`${cmd}`);
+          if (!Printer.isVerbose) {
+            Printer.plainSubheader(title);
+          }
+          Printer.error(message.trim());
         }
-      }
-      Printer.log(`${cmd}`);
-      if (message) {
-        Printer.log(message.trim());
       }
     });
   });
