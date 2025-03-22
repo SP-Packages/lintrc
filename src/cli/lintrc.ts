@@ -15,7 +15,7 @@ export async function lintrc(
   config: Config,
   options: LintRCOptions,
 ): Promise<void> {
-  Printer.header("Running LintRC");
+  Printer.log("Running LintRC", "header");
 
   const { ext = [] } = options;
   const toolResults: CommandResult[] = [];

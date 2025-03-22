@@ -140,7 +140,11 @@ export function getToolsByExtension(files: string[], config: Config, ext: string
  * @param results - The results of the commands
  */
 export function summary(results: CommandResult[]): void {
-  Printer.subheader("LintRC Results");
+  if (Printer.isVerbose) {
+    Printer.log("LintRC Results", "subheader");
+  } else {
+    Printer.plainSubheader("LintRC Results");
+  }
 
   const successes: string[] = [];
   const warnings: string[] = [];
@@ -160,13 +164,13 @@ export function summary(results: CommandResult[]): void {
   warnings.forEach((warning) => Printer.warning(warning));
   errors.forEach((error) => Printer.error(error));
 
-  Printer.header("LintRC Summary");
+  Printer.log("LintRC Summary", "header");
 
   if (errors.length === 0) {
-    Printer.success("LintRC completed successfully. Happy coding!");
+    Printer.log("LintRC completed successfully. Happy coding!", "success");
     process.exit(0);
   } else {
-    Printer.error("LintRC completed with errors.");
+    Printer.log("LintRC completed with errors.", "error");
     process.exit(1);
   }
 }
