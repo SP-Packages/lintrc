@@ -7,6 +7,7 @@ export type Command = {
   args?: string[];
   files?: string[];
   includeFiles?: boolean;
+  ignoreFiles?: string[];
   priority?: number;
 };
 
