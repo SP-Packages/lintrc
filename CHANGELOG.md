@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/SP-Packages/lintrc/compare/v1.2.2...v1.3.0) (2025-03-22)
+
+### Features
+
+* **constants:** add ignoreFiles property to command configuration ([5bd2b81](https://github.com/SP-Packages/lintrc/commit/5bd2b818b102a4ad67f3bf5bbfaac2d56172a8ad))
+
 ## [1.2.2](https://github.com/SP-Packages/lintrc/compare/v1.2.1...v1.2.2) (2025-03-22)
 
 ### Bug Fixes
