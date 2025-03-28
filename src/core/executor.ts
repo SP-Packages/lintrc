@@ -1,6 +1,6 @@
 import pLimit from "p-limit";
 import { spawn } from "child_process";
-import { Printer } from "../utils/logger.js";
+import { Ora, Printer } from "../utils/logger.js";
 import { isToolAvailable } from "../utils/helper.js";
 import { Command, Commands, CommandResult } from "../types/types.js";
 
@@ -11,10 +11,15 @@ const limit = pLimit(CONCURRENCY_LIMIT);
  * Executes a single command and buffers output.
  * @param key - The command key
  * @param commandDetails - The details of the command
+ * @param spinner - The spinner instance for logging
  * @returns The result of the command execution
  */
-async function executeCommandBuffered(commandDetails: Command): Promise<CommandResult> {
+async function executeCommandBuffered(
+  commandDetails: Command,
+  spinner: Ora,
+): Promise<CommandResult> {
   const { title, type, command, args, files, behavior, requires } = commandDetails;
+  spinner.text = title;
   if ((requires && !isToolAvailable(requires)) || !isToolAvailable(command)) {
     Printer.log(title, "subheader");
     const message = `Skipping ${title}: Required tool '${requires || command}' not found.`;
@@ -82,9 +87,10 @@ async function executeCommandBuffered(commandDetails: Command): Promise<CommandR
 /**
  * Executes the given commands in parallel but prints outputs sequentially.
  * @param commands - The commands to execute
+ * @param spinner - The spinner instance for logging
  * @returns The results of the command execution
  */
-export async function executeCommands(commands: Commands): Promise<CommandResult[]> {
+export async function executeCommands(commands: Commands, spinner: Ora): Promise<CommandResult[]> {
   const results: CommandResult[] = [];
   if (Object.keys(commands).length > 0) {
     const fileList = [
@@ -96,7 +102,7 @@ export async function executeCommands(commands: Commands): Promise<CommandResult
 
     // Run commands in parallel with controlled concurrency
     const commandPromises = Object.keys(commands).map((key) =>
-      limit(() => executeCommandBuffered(commands[key])),
+      limit(() => executeCommandBuffered(commands[key], spinner)),
     );
 
     // Execute all commands and collect results
