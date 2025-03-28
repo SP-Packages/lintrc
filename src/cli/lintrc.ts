@@ -17,7 +17,7 @@ export async function lintrc(
 ): Promise<void> {
   Printer.log("Running LintRC", "header");
 
-  const spinner = Printer.spinner("Processing...").start();
+  const spinner = Printer.spinner("Running linters...").start();
 
   const { ext = [] } = options;
   const toolResults: CommandResult[] = [];
@@ -32,8 +32,14 @@ export async function lintrc(
     process.exit(1);
   }
 
-  const results = await executeCommands(tools, spinner);
-  spinner.succeed("Processing complete!");
-  toolResults.push(...results);
-  summary(toolResults);
+  try {
+    const results = await executeCommands(tools, spinner);
+    spinner.succeed("Linting complete!");
+    toolResults.push(...results);
+    summary(toolResults);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    spinner.fail(`Error during execution: ${message}`);
+    throw error;
+  }
 }
