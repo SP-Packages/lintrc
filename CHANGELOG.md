@@ -1,3 +1,13 @@
+## [1.4.0](https://github.com/SP-Packages/lintrc/compare/v1.3.0...v1.4.0) (2025-03-28)
+
+### Features
+
+* **depkit:** update dependency versions and add new commands ([79a0cad](https://github.com/SP-Packages/lintrc/commit/79a0cadabd77194aedd73ef8848c090b290defb0))
+* **lintrc:** add spinner for processing feedback during linting ([bb22746](https://github.com/SP-Packages/lintrc/commit/bb22746e44e3c8c008eb1d0a19c362387ed93f9f))
+* **lintrc:** improve spinner messages and error handling during linting ([a7f7d06](https://github.com/SP-Packages/lintrc/commit/a7f7d066d88034b3c4bf1a21f49217496c33404d))
+* **makefile:** add Makefile with help, start, dep, and lint targets ([0916a22](https://github.com/SP-Packages/lintrc/commit/0916a22a9140509d1e0e1d5686c9a4a7f88522d6))
+* **workflows:** update prepare workflow for code quality checks ([dd3cd39](https://github.com/SP-Packages/lintrc/commit/dd3cd3976761734890d99248837314326b126a71))
+
 ## [1.3.0](https://github.com/SP-Packages/lintrc/compare/v1.2.2...v1.3.0) (2025-03-22)
 
 ### Features
