@@ -189,36 +189,20 @@ This configuration allows `lintrc` to automatically apply the appropriate linter
 ## **🎯 Example Outputs**
 
 ```sh
-############################################################
- Running LintRC
-############################################################
-**************************************************
- ESLint
-**************************************************
-✔ [SUCCESS] Successfully Completed.
-**************************************************
- PHP Code Sniffer
-**************************************************
-❌ [ERROR] Failed to complete.
-**************************************************
- Prettier
-**************************************************
-✔ [SUCCESS] Successfully Completed.
-**************************************************
+lintrc
+------------------------------
  cSpell
-**************************************************
-⚠ [WARNING] Failed with warnings.
-**************************************************
+------------------------------
+❌  [ERROR] package.json:112:32 - Unknown word (lintrc)
+------------------------------
  LintRC Results
-**************************************************
-✔ [SUCCESS] ESLint: Passed
-❌ [ERROR] PHP Code Sniffer: Failed
-✔ [SUCCESS] Prettier: Passed
-⚠ [WARNING] cSpell: Issues found
-############################################################
- LintRC Summary
-############################################################
-❌ [ERROR] LintRC completed with errors.
+------------------------------
+✅ [SUCCESS] Prettier: Passed
+✅ [SUCCESS] ESLint: Passed
+✅ [SUCCESS] Markdown Lint: Passed
+✅ [SUCCESS] Commit Lint: Passed
+✅ [SUCCESS] DepCheck: Passed
+❌  [ERROR] cSpell: Failed
 ```
 
 ---
