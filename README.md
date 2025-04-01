@@ -20,7 +20,7 @@
 - 🔍 **Detects file types and applies appropriate linters automatically**
 - 🛠 **Supports multiple linters** (ESLint, Prettier, PHPStan, PHPCS, Markdownlint, etc.)
 - 🚀 **Parallel execution** for improved performance
-- 📜 **Customizable config file (`.lintrc.json`)**
+- 📜 **Customizable config file (`lintrc.json`)**
 - ✅ **Runs only on Git-tracked files by default**
 - 🏗 **Ideal for CI/CD pipelines and local development**
 
@@ -71,7 +71,7 @@ files List of files to lint. If omitted, uses Git-tracked files.
 
 Options:
 -V, --version output the version number
--c, --config <config> Path to the configuration file (default: .lintrc.json)
+-c, --config <config> Path to the configuration file (default: lintrc.json)
 -e, --ext <ext...> Optionally limit the linter to specific extensions
 -q, --quiet Disable output
 -v, --verbose Enable verbose logging
@@ -101,11 +101,11 @@ lintrc({ verbose: true });
 
 ---
 
-## **⚙️ Configuration (`.lintrc.json`)**
+## **⚙️ Configuration (`lintrc.json`)**
 
-By default, `lintrc` will look for a `.lintrc.json` file in your project's root directory. You can customize it as follows:
+By default, `lintrc` will look for a `lintrc.json` or `.lintrc.json` file in your project's root directory. You can customize it as follows:
 
-The `.lintrc.json` configuration file allows you to define the tools and file type mappings for `lintrc`. Below is an example configuration and explanation of its keys:
+The `lintrc.json` configuration file allows you to define the tools and file type mappings for `lintrc`. Below is an example configuration and explanation of its keys:
 
 ### **TOOLS**
 
