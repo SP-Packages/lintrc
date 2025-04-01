@@ -1,3 +1,18 @@
+## [1.5.0](https://github.com/SP-Packages/lintrc/compare/v1.4.0...v1.5.0) (2025-04-01)
+
+### Features
+
+* **funding:** add custom PayPal funding link ([3a7df53](https://github.com/SP-Packages/lintrc/commit/3a7df53de79631fdfde60af3933011825a2f27fd))
+* **labeler:** enhance file labeling for various file types ([ff86df2](https://github.com/SP-Packages/lintrc/commit/ff86df299c20fd86edf1f3c41418bf80f99306cf))
+* **lintrc, config:** update dependencies and configuration ([28cde31](https://github.com/SP-Packages/lintrc/commit/28cde3100fd1449e8eb590bdf68506cf8cb16c35))
+* **workflows:** update workflow actions and permissions for consistency ([27f9c15](https://github.com/SP-Packages/lintrc/commit/27f9c15ed041cce096dfdff3e0deddffcac12ee1))
+
+### Bug Fixes
+
+* **lintrc, executor:** stop spinner on error and clear before starting ([b5b798a](https://github.com/SP-Packages/lintrc/commit/b5b798a72b83fc48e4baee06e263682f950873c7))
+* **readme, config:** update default config file name to lintrc.json ([11a48d4](https://github.com/SP-Packages/lintrc/commit/11a48d4894945a218074363a3d92c75e721348f7))
+* **readme:** update lintrc output examples for clarity and accuracy ([77cb62e](https://github.com/SP-Packages/lintrc/commit/77cb62e1b26f1d0394d83ea59d624442d2096a31))
+
 ## [1.4.0](https://github.com/SP-Packages/lintrc/compare/v1.3.0...v1.4.0) (2025-03-28)
 
 ### Features
