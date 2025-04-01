@@ -27,19 +27,20 @@ export async function lintrc(
   const tools = getToolsByExtension(filesToLint, config, ext);
 
   if (Object.keys(tools).length === 0) {
-    spinner.stop();
+    spinner.clear();
     Printer.error("No matching tools found. Skipping checks.");
     process.exit(1);
   }
 
   try {
     const results = await executeCommands(tools, spinner);
-    spinner.stop();
+    spinner.clear();
     toolResults.push(...results);
     summary(toolResults);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
-    spinner.fail(`Error during execution: ${message}`);
+    Printer.error(message);
+    spinner.clear();
     throw error;
   }
 }
