@@ -3,17 +3,16 @@
 <p align="center"><i>A lightweight CLI tool for running multiple linters efficiently.</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/npm/v/@sp-packages/lintrc" alt="npm version">
-  <a href="https://packagephobia.com/result?p=@sp-packages/lintrc"><img src="https://packagephobia.com/badge?p=@sp-packages/lintrc" alt="install size"></a>
-  <img src="https://img.shields.io/npm/dw/@sp-packages/lintrc" alt="npm downloads">
-  <img src="https://img.shields.io/npm/l/@sp-packages/lintrc" alt="license">
-  <img src="https://github.com/SP-Packages/lintrc/actions/workflows/release.yml/badge.svg" alt="build status">
+  <a href="https://www.npmjs.com/package/@sp-packages/lintrc"><img src="https://img.shields.io/npm/v/@sp-packages/lintrc" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@sp-packages/lintrc"><img src="https://img.shields.io/npm/dw/@sp-packages/lintrc" alt="npm downloads"></a>
+  <a href="https://github.com/SP-Packages/lintrc/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@sp-packages/lintrc" alt="license"></a>
+  <a href="https://github.com/SP-Packages/lintrc/actions/workflows/release.yml"><img src="https://github.com/SP-Packages/lintrc/actions/workflows/release.yml/badge.svg" alt="build status"></a>
   <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/semantic--release-conventionalcommits-e10079?logo=semantic-release" alt="semantic-release"></a>
-  <img src="https://img.shields.io/badge/Made%20with-TypeScript-blue.svg" alt="TypeScript">
-  <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg" alt="Prettier">
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/Made%20with-TypeScript-blue.svg" alt="TypeScript"></a>
+  <a href="https://prettier.io/"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg" alt="Prettier"></a>
   <a href="https://codecov.io/gh/SP-Packages/lintrc"><img src="https://codecov.io/gh/SP-Packages/lintrc/graph/badge.svg?token=60X95UNTQL" alt="codecov"></a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome">
-   <a href="https://github.com/sponsors/iamsenthilprabu"><img src="https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?logo=github" alt="Sponsor"></a>
+  <a href="https://github.com/SP-Packages/lintrc/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome"></a>
+  <a href="https://github.com/sponsors/iamsenthilprabu"><img src="https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?logo=github" alt="Sponsor"></a>
 </p>
 
 ## **✨ Features**
