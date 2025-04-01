@@ -28,6 +28,7 @@ async function executeCommandBuffered(
       return { title, status: "warning", output: `Missing tool: ${requires || command}` };
     } else {
       if (!Printer.isVerbose) {
+        spinner.clear().start();
         Printer.plainSubheader(title);
       }
       Printer.error(message);
@@ -75,6 +76,7 @@ async function executeCommandBuffered(
           Printer.log(`${title}- Failed to complete.`, "error");
           Printer.log(`${cmd}`);
           if (!Printer.isVerbose) {
+            spinner.clear().start();
             Printer.plainSubheader(title);
           }
           Printer.error(message.trim());
