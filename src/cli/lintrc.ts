@@ -27,14 +27,14 @@ export async function lintrc(
   const tools = getToolsByExtension(filesToLint, config, ext);
 
   if (Object.keys(tools).length === 0) {
-    spinner.fail();
+    spinner.stop();
     Printer.error("No matching tools found. Skipping checks.");
     process.exit(1);
   }
 
   try {
     const results = await executeCommands(tools, spinner);
-    spinner.succeed("Linting complete!");
+    spinner.stop();
     toolResults.push(...results);
     summary(toolResults);
   } catch (error) {

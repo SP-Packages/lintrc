@@ -13,7 +13,7 @@ program
   .version(version)
   .description("A lightweight CLI tool for running multiple linters efficiently.")
   .argument("[files...]", "List of files to lint. If omitted, uses Git-tracked files.")
-  .option("-c, --config <config>", "Path to the configuration file (default: .lintrc.json)")
+  .option("-c, --config <config>", "Path to the configuration file (default: lintrc.json)")
   .option("-e, --ext <ext...>", "Optionally limit the linter to specific extensions", (value) =>
     value.split(",").map((ext) => ext.replace(/^=/, "")),
   )
