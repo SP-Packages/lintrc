@@ -1,3 +1,12 @@
+## [1.5.1](https://github.com/SP-Packages/lintrc/compare/v1.5.0...v1.5.1) (2025-05-22)
+
+### Bug Fixes
+
+* **dependabot:** change update schedule from daily to weekly ([9684515](https://github.com/SP-Packages/lintrc/commit/96845158c7ef60292eb78c75f143462c46480471))
+* **dependencies:** update dependencies ([5a1d792](https://github.com/SP-Packages/lintrc/commit/5a1d7925ac82ec576ae8aab8b3c1f5d2ca9586e6))
+* **lintrc:** clear spinner on error and no matching tools found ([a0590f4](https://github.com/SP-Packages/lintrc/commit/a0590f44e503ecb4128543e440e8ff7d86196d9e))
+* **workflows:** update action versions and maintain permissions ([ae6b5f7](https://github.com/SP-Packages/lintrc/commit/ae6b5f7483b0fe12aa9a8d556d7dda4cc2994771))
+
 ## [1.5.0](https://github.com/SP-Packages/lintrc/compare/v1.4.0...v1.5.0) (2025-04-01)
 
 ### Features
