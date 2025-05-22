@@ -1,1 +1,1 @@
-export { lintrc } from "./cli/lintrc.js";
+export { lintrc } from './cli/lintrc.js';

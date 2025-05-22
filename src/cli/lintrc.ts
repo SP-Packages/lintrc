@@ -1,8 +1,12 @@
-import { existsSync } from "fs";
-import { Printer } from "../utils/logger.js";
-import { executeCommands } from "../core/executor.js";
-import { Config, CommandResult, LintRCOptions } from "../types/types.js";
-import { getGitTrackedFiles, getToolsByExtension, summary } from "../utils/helper.js";
+import { existsSync } from 'fs';
+import { Printer } from '../utils/logger.js';
+import { executeCommands } from '../core/executor.js';
+import { Config, CommandResult, LintRCOptions } from '../types/types.js';
+import {
+  getGitTrackedFiles,
+  getToolsByExtension,
+  summary
+} from '../utils/helper.js';
 
 /**
  * Lint files based on the configuration file
@@ -13,11 +17,11 @@ import { getGitTrackedFiles, getToolsByExtension, summary } from "../utils/helpe
 export async function lintrc(
   files: string[],
   config: Config,
-  options: LintRCOptions,
+  options: LintRCOptions
 ): Promise<void> {
-  Printer.log("Running LintRC", "header");
+  Printer.log('Running LintRC', 'header');
 
-  const spinner = Printer.spinner("Running linters...").start();
+  const spinner = Printer.spinner('Running linters...').start();
 
   const { ext = [] } = options;
   const toolResults: CommandResult[] = [];
@@ -28,7 +32,7 @@ export async function lintrc(
 
   if (Object.keys(tools).length === 0) {
     spinner.clear();
-    Printer.error("No matching tools found. Skipping checks.");
+    Printer.error('No matching tools found. Skipping checks.');
     process.exit(1);
   }
 
@@ -38,7 +42,7 @@ export async function lintrc(
     toolResults.push(...results);
     summary(toolResults);
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown error";
+    const message = error instanceof Error ? error.message : 'Unknown error';
     Printer.error(message);
     spinner.clear();
     throw error;
