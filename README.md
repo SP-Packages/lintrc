@@ -94,7 +94,7 @@ You can also use `lintrc` inside your JavaScript/TypeScript projects.
 ### **Import and Use in Your Project**
 
 ```ts
-import { lintrc } from "@sp-packages/lintrc";
+import { lintrc } from '@sp-packages/lintrc';
 
 lintrc({ verbose: true });
 ```
