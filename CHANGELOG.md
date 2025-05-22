@@ -1,3 +1,9 @@
+## [1.5.2](https://github.com/SP-Packages/lintrc/compare/v1.5.1...v1.5.2) (2025-05-22)
+
+### Bug Fixes
+
+* **dependencies:** update dependencies ([6cfb63f](https://github.com/SP-Packages/lintrc/commit/6cfb63f19c5c3d4ee20fc182e9746c09a28599f7))
+
 ## [1.5.1](https://github.com/SP-Packages/lintrc/compare/v1.5.0...v1.5.1) (2025-05-22)
 
 ### Bug Fixes
