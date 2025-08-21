@@ -14,6 +14,15 @@ export const DEFAULT_CONFIG: Config = {
       includeFiles: false,
       priority: 9
     },
+    COMPOSER_VERIFY: {
+      title: 'Verifying Composer Dependencies',
+      type: 'composer',
+      command: 'validate',
+      args: ['--no-interaction', '--strict'],
+      includeFiles: false,
+      behavior: 'error',
+      priority: 10
+    },
     CSPELL: {
       title: 'cSpell',
       type: 'npm',
@@ -96,6 +105,6 @@ export const DEFAULT_CONFIG: Config = {
     css: ['PRETTIER'],
     scss: ['PRETTIER'],
     less: ['PRETTIER'],
-    '*': ['CSPELL', 'COMMITLINT']
+    '*': ['COMPOSER_VERIFY', 'CSPELL', 'COMMITLINT']
   }
 };

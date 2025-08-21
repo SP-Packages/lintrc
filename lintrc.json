@@ -9,6 +9,15 @@
       "includeFiles": false,
       "priority": 9
     },
+    "COMPOSER_VERIFY": {
+      "title": "Verifying Composer Dependencies",
+      "type": "composer",
+      "command": "validate",
+      "args": ["--no-interaction", "--strict"],
+      "includeFiles": false,
+      "behavior": "error",
+      "priority": 11
+    },
     "CSPELL": {
       "title": "cSpell",
       "type": "npm",
@@ -99,6 +108,6 @@
     "css": ["PRETTIER"],
     "scss": ["PRETTIER"],
     "less": ["PRETTIER"],
-    "*": ["CSPELL", "COMMITLINT", "DEPCHECK"]
+    "*": ["COMPOSER_VERIFY", "CSPELL", "COMMITLINT", "DEPCHECK"]
   }
 }
