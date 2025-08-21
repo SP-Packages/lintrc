@@ -24,6 +24,8 @@ export type LintRCOptions = {
   config?: string;
   quiet?: boolean;
   verbose?: boolean;
+  skipComposer?: boolean;
+  skipNpm?: boolean;
 };
 
 interface Mapping {

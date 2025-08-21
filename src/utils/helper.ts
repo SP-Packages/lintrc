@@ -1,3 +1,4 @@
+/* eslint-disable tsdoc/syntax */
 import { existsSync } from 'fs';
 import { Printer } from './logger.js';
 import { execSync } from 'child_process';
@@ -224,19 +225,69 @@ function sortToolsByPriority(tools: Commands): Commands {
 }
 
 /**
- * Retrieves the tools to lint the given files.
- * @param files - The files to lint
- * @param config - The configuration object
- * @param ext - The file extensions to lint
- * @returns The tools to lint the files
+ * Filters the available tools based on the provided options.
+ * @param tools - The tools to filter
+ * @param options - Options to skip certain tools:
+ * - `skipComposer`: If true, composer tool will be skipped. (default: false)
+ * - `skipNpm`: If true, npm tool will be skipped. (default: false)
+ * @param options.skipComposer
+ * @param options.skipNpm
+ * @param options.skipComposer
+ * @param options.skipNpm
+ * @returns Filtered commands object with only available tools
+ */
+function filterAvailableTools(
+  tools: Commands,
+  options: { skipComposer?: boolean; skipNpm?: boolean } = {}
+): Commands {
+  const { skipComposer = false, skipNpm = false } = options;
+
+  const toolChecks = [
+    { type: 'composer', skipFlag: skipComposer, file: 'composer.json' },
+    { type: 'npm', skipFlag: skipNpm, file: 'package.json' }
+  ];
+
+  return Object.fromEntries(
+    Object.entries(tools).filter(([, tool]) => {
+      const check = toolChecks.find((c) => c.type === tool.type);
+      if (check) {
+        if (
+          check.skipFlag ||
+          !isToolAvailable(check.type) ||
+          !existsSync(check.file)
+        ) {
+          return false;
+        }
+      }
+      return true;
+    })
+  );
+}
+
+/**
+ * Build tool commands based on file extensions and config mappings.
+ *
+ * @param files - List of files to analyze.
+ * @param config - Config object containing TOOLS and MAPPING.
+ * @param ext - List of file extensions to filter against. Empty means "all".
+ * @param options - Optional flags to skip certain tools:
+ * - `skipComposer`: If true, composer tool will be skipped. (default: false)
+ * - `skipNpm`: If true, npm tool will be skipped. (default: false)
+ * @param options.skipComposer
+ * @param options.skipNpm
+ * @param options.skipComposer
+ * @param options.skipNpm
+ * @returns Commands object with filtered tools and their assigned files.
  */
 export function getToolsByExtension(
   files: string[],
   config: Config,
-  ext: string[]
+  ext: string[],
+  options: { skipComposer?: boolean; skipNpm?: boolean } = {}
 ): Commands {
-  const TOOLS = config.TOOLS;
   const MAPPING = new Map(Object.entries(config.MAPPING));
+
+  // Map files to tools based on extension
   const toolsToLint = files.reduce(
     (group, file) => {
       const extension = file.split('.').pop() || '';
@@ -250,7 +301,6 @@ export function getToolsByExtension(
 
       if (ext.length === 0 || ext.includes('*')) {
         const tools = MAPPING.get('*') || [];
-
         tools.forEach((tool) => {
           (group[tool] ||= []).push(file);
         });
@@ -261,12 +311,17 @@ export function getToolsByExtension(
     {} as Record<string, string[]>
   );
 
+  // Filter out unavailable tools
+  const availableTools = filterAvailableTools(config.TOOLS, options);
+
+  // Build formatted tools
   const formattedTools = Object.fromEntries(
     Object.entries(toolsToLint)
-      .filter(([tool]) => TOOLS[tool])
+      .filter(([tool]) => availableTools[tool])
       .map(([tool, fileList]) => {
+        const def = availableTools[tool];
         const filteredFiles = fileList.filter(
-          (file) => !TOOLS[tool].ignoreFiles?.includes(file)
+          (file) => !def.ignoreFiles?.includes(file)
         );
         // If no files are found after filtering, add "." as a placeholder
         // This ensures the tool can still run without failing due to missing files
@@ -274,8 +329,8 @@ export function getToolsByExtension(
         return [
           tool,
           {
-            ...TOOLS[tool],
-            files: TOOLS[tool].includeFiles === false ? [] : filteredFiles
+            ...def,
+            files: def.includeFiles === false ? [] : filteredFiles
           }
         ];
       })

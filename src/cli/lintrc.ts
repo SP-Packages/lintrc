@@ -23,12 +23,15 @@ export async function lintrc(
 
   const spinner = Printer.spinner('Running linters...').start();
 
-  const { ext = [] } = options;
+  const { ext = [], skipComposer, skipNpm } = options;
   const toolResults: CommandResult[] = [];
 
   let filesToLint = files.length > 0 ? files : getGitTrackedFiles();
   filesToLint = filesToLint.filter(existsSync);
-  const tools = getToolsByExtension(filesToLint, config, ext);
+  const tools = getToolsByExtension(filesToLint, config, ext, {
+    skipComposer,
+    skipNpm
+  });
 
   if (Object.keys(tools).length === 0) {
     spinner.clear();

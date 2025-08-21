@@ -18,6 +18,8 @@ program
     '[files...]',
     'List of files to lint. If omitted, uses Git-tracked files.'
   )
+  .option('--skip-composer', 'Skip processing Composer dependencies')
+  .option('--skip-npm', 'Skip processing NPM dependencies')
   .option(
     '-c, --config <config>',
     'Path to the configuration file (default: lintrc.json)'

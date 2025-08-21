@@ -71,6 +71,8 @@ files List of files to lint. If omitted, uses Git-tracked files.
 
 Options:
 -V, --version output the version number
+--skip-composer Skip processing Composer dependencies
+--skip-npm Skip processing NPM dependencies
 -c, --config <config> Path to the configuration file (default: lintrc.json)
 -e, --ext <ext...> Optionally limit the linter to specific extensions
 -q, --quiet Disable output
