@@ -21,7 +21,10 @@ async function executeCommandBuffered(
   const { title, type, command, args, files, behavior, requires } =
     commandDetails;
   spinner.text = title;
-  if ((requires && !isToolAvailable(requires)) || !isToolAvailable(command)) {
+  if (
+    (requires && !isToolAvailable(requires)) ||
+    !isToolAvailable(command, type)
+  ) {
     Printer.log(title, 'subheader');
     const message = `Skipping ${title}: Required tool '${requires || command}' not found.`;
     if (behavior === 'warn') {
