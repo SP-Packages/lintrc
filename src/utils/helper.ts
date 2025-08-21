@@ -3,8 +3,62 @@ import { Printer } from './logger.js';
 import { execSync } from 'child_process';
 import { CommandResult, Commands, Config } from '../types/types.js';
 
-let cachedGitFiles: string[] | null = null;
+type ComposerCommand = {
+  name: string;
+  aliases?: string[];
+};
+
+type ComposerList = {
+  commands: ComposerCommand[];
+};
+
+type NpmCommandInfo = {
+  description?: string;
+  aliases?: string[];
+};
+
+type NpmHelp = {
+  commands: Record<string, NpmCommandInfo>;
+};
+
+/**
+ * Checks if the given object is a ComposerList.
+ * @param obj - The object to check
+ * @returns True if the object is a ComposerList, false otherwise
+ */
+function isComposerList(obj: unknown): obj is ComposerList {
+  return (
+    typeof obj === 'object' &&
+    obj !== null &&
+    Array.isArray((obj as { commands?: unknown }).commands)
+  );
+}
+
+/**
+ * Checks if the given object is an NpmHelp.
+ * @param obj - The object to check
+ * @returns True if the object is an NpmHelp, false otherwise
+ */
+function isNpmHelp(obj: unknown): obj is NpmHelp {
+  return (
+    typeof obj === 'object' &&
+    obj !== null &&
+    'commands' in obj &&
+    typeof (obj as { commands?: unknown }).commands === 'object'
+  );
+}
+
+/**
+ * Cache for tool availability checks to avoid redundant filesystem checks.
+ * Keyed by tool name or type:toolName.
+ */
 const toolCache = new Map<string, boolean>();
+
+/**
+ * Cache for Git-tracked files to avoid redundant Git commands.
+ * Initialized as null to indicate no files cached yet.
+ */
+let cachedGitFiles: string[] | null = null;
 
 /**
  * Checks if the given tool is available in the system.
@@ -55,11 +109,61 @@ export function isToolAvailable(
     }
   }
 
-  const commandsToCheck = [
-    `npx ${tool} --no-install --version`,
-    `command -v ${tool}`,
-    `${tool} --version`
-  ];
+  const commandsToCheck: string[] = [];
+
+  // NPM subcommands
+  if (!type || type === 'npm') {
+    try {
+      const output = execSync('npm help --json', {
+        encoding: 'utf8',
+        stdio: ['pipe', 'pipe', 'ignore']
+      });
+      const parsed: unknown = JSON.parse(output);
+
+      if (isNpmHelp(parsed)) {
+        for (const [name, info] of Object.entries(parsed.commands)) {
+          if (name === tool || info.aliases?.includes(tool)) {
+            toolCache.set(cacheKey, true);
+            return true;
+          }
+        }
+      }
+    } catch {
+      // fallback
+      commandsToCheck.push(
+        `npx ${tool} --no-install --version`,
+        `npm ${tool} --version`
+      );
+    }
+  }
+
+  // Composer subcommands
+  if (!type || type === 'composer') {
+    try {
+      const output = execSync('composer list --format=json', {
+        encoding: 'utf8',
+        stdio: ['pipe', 'pipe', 'ignore']
+      });
+      const parsed: unknown = JSON.parse(output);
+
+      if (isComposerList(parsed)) {
+        if (
+          parsed.commands.some(
+            (cmd) => cmd.name === tool || cmd.aliases?.includes(tool)
+          )
+        ) {
+          toolCache.set(cacheKey, true);
+          return true;
+        }
+      }
+    } catch {
+      // fallback
+      commandsToCheck.push(`composer ${tool}`);
+    }
+  }
+
+  // Generic fallbacks
+  commandsToCheck.push(`command -v ${tool}`, `${tool} --version`);
 
   for (const cmd of commandsToCheck) {
     try {
