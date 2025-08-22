@@ -83,7 +83,7 @@ export const DEFAULT_CONFIG: Config = {
       type: 'npm',
       command: 'prettier',
       args: ['--write'],
-      behavior: 'error',
+      behavior: 'warn',
       priority: 2
     }
   },
