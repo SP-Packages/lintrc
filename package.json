@@ -46,6 +46,7 @@
       "depcheck",
       "husky",
       "markdownlint-cli",
+      "npm-package-json-lint-config-default",
       "semantic-release",
       "@commitlint/cli",
       "@commitlint/config-conventional",
