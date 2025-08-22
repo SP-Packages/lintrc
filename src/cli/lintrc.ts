@@ -43,7 +43,7 @@ export async function lintrc(
     const results = await executeCommands(tools, spinner);
     spinner.clear();
     toolResults.push(...results);
-    summary(toolResults);
+    summary(toolResults, options.strict);
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error';
     Printer.error(message);

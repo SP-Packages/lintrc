@@ -29,6 +29,7 @@ program
     'Optionally limit the linter to specific extensions',
     (value) => value.split(',').map((ext) => ext.replace(/^=/, ''))
   )
+  .option('-s, --strict', 'Enable strict mode')
   .option('-q, --quiet', 'Disable output')
   .option('-m, --minimal', 'Enable minimal output')
   .option('-v, --verbose', 'Enable verbose logging')

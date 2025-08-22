@@ -75,6 +75,7 @@ Options:
 --skip-npm Skip processing NPM dependencies
 -c, --config <config> Path to the configuration file (default: lintrc.json)
 -e, --ext <ext...> Optionally limit the linter to specific extensions
+-s, --strict Strict Mode (return exit code 1 even for warnings)
 -q, --quiet Disable output
 -m, --minimal Essential output
 -v, --verbose Enable verbose logging

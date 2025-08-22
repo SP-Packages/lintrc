@@ -342,8 +342,9 @@ export function getToolsByExtension(
 /**
  * Prints the summary of the LintRC.
  * @param results - The results of the commands
+ * @param strict - If true, treat warnings as errors
  */
-export function summary(results: CommandResult[]): void {
+export function summary(results: CommandResult[], strict = false): void {
   if (Printer.isVerbose) {
     Printer.log('LintRC Results', 'subheader');
   } else {
@@ -370,9 +371,12 @@ export function summary(results: CommandResult[]): void {
 
   Printer.log('LintRC Summary', 'header');
 
-  if (errors.length === 0) {
+  if (errors.length === 0 && (!strict || warnings.length === 0)) {
     Printer.log('LintRC completed successfully. Happy coding!', 'success');
     process.exit(0);
+  } else if (errors.length === 0 && strict && warnings.length > 0) {
+    Printer.log('LintRC completed with warnings (strict mode).', 'error');
+    process.exit(1);
   } else {
     Printer.log('LintRC completed with errors.', 'error');
     process.exit(1);
