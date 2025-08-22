@@ -106,7 +106,7 @@ async function executeCommandBuffered(
             spinner.clear().start();
             Printer.plainSubheader(title);
           }
-          Printer.error(message.trim());
+          Printer.error('\n' + message.trim());
         }
       }
     });
