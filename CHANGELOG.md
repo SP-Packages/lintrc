@@ -1,3 +1,16 @@
+## [1.8.0](https://github.com/SP-Packages/lintrc/compare/v1.7.0...v1.8.0) (2025-08-22)
+
+### Features
+
+* **lintrc:** add strict and minimal options to LintRCOptions type ([1f78c9c](https://github.com/SP-Packages/lintrc/commit/1f78c9c3bc2e638ddc5a2a986afae013826a6c81))
+* **release:** add strict mode ([fd65e20](https://github.com/SP-Packages/lintrc/commit/fd65e20decdf98eef1cd107cced5113dd0634dce))
+* **strict:** add strict mode option to enforce error handling ([143fd78](https://github.com/SP-Packages/lintrc/commit/143fd7877bdd5ed27a15f81e81cd964bf16aae7c))
+
+### Bug Fixes
+
+* **dependencies:** update dependencies ([a93c4a6](https://github.com/SP-Packages/lintrc/commit/a93c4a6b87446a04206d9036a121862fd7b4daf9))
+* **executor:** handle empty response message in command output ([27655dc](https://github.com/SP-Packages/lintrc/commit/27655dcca399f91b14121c68bb8d5558b7841066))
+
 ## [1.7.0](https://github.com/SP-Packages/lintrc/compare/v1.6.1...v1.7.0) (2025-08-22)
 
 ### Features
