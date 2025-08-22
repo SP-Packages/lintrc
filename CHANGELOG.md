@@ -1,3 +1,24 @@
+## [1.6.0](https://github.com/SP-Packages/lintrc/compare/v1.5.3...v1.6.0) (2025-08-22)
+
+### Features
+
+* **helper:** add composer verification tool with error behavior ([4d3a57a](https://github.com/SP-Packages/lintrc/commit/4d3a57a698b5bcf95a18d9fddac7828b0b6ada75))
+* **helper:** add options to skip processing Composer and NPM ([0a27388](https://github.com/SP-Packages/lintrc/commit/0a27388de96a57ac9bead58882753f67b93f7acf))
+* **helper:** improve tool availability checks and formatting ([ca7bc81](https://github.com/SP-Packages/lintrc/commit/ca7bc81357f3df4a70a2e5a0a2cda18e4798bf96))
+* **lintrc:** add npm verification tool and update mapping ([db00d83](https://github.com/SP-Packages/lintrc/commit/db00d837023d3a74b9dafe4728487323597228e9))
+* **scripts:** add watch option and make alphabetical order ([e773c81](https://github.com/SP-Packages/lintrc/commit/e773c8136e3e2d07eba4453667c593a48c651848))
+
+### Bug Fixes
+
+* **dependencies:** update dependencies ([536d654](https://github.com/SP-Packages/lintrc/commit/536d654da196490f48bf86fcfb3bcbc7e4270582))
+* **dependencies:** update dependencies ([f7f3fbe](https://github.com/SP-Packages/lintrc/commit/f7f3fbee8426f13668691253203d9638dbfbb560))
+* **helper:** add space before error message for better readability ([0057096](https://github.com/SP-Packages/lintrc/commit/0057096569e2094cb38f7c54cff27ff9661f4fb1))
+* **helper:** change behavior from error to warn for various tools ([cc7516b](https://github.com/SP-Packages/lintrc/commit/cc7516b4bdbb1b0953cfb06bf6bc3224166bad0f))
+* **helper:** enhance tool availability check with optional type ([7224a2a](https://github.com/SP-Packages/lintrc/commit/7224a2a3a07265f089f1aaf909bdb90d873bcb36))
+* **helper:** enhance tool availability checks for npm and composer ([9ac979d](https://github.com/SP-Packages/lintrc/commit/9ac979d514fd98d2fb9f2266959e8f13e6ddda13))
+* **helper:** improve tool availability check for npm and composer ([455dc3f](https://github.com/SP-Packages/lintrc/commit/455dc3fab4ec9995f4e6152da5de699bd78967a8))
+* **lintrc:** change behavior of  verify commands to warn as workaround ([c1f9de7](https://github.com/SP-Packages/lintrc/commit/c1f9de7f454ab9b33491874113ce28524979bc61))
+
 ## [1.5.3](https://github.com/SP-Packages/lintrc/compare/v1.5.2...v1.5.3) (2025-07-26)
 
 ### Bug Fixes
