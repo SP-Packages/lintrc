@@ -76,6 +76,7 @@ Options:
 -c, --config <config> Path to the configuration file (default: lintrc.json)
 -e, --ext <ext...> Optionally limit the linter to specific extensions
 -q, --quiet Disable output
+-m, --minimal Essential output
 -v, --verbose Enable verbose logging
 -h, --help display help for command
 ```
