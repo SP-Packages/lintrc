@@ -1,3 +1,14 @@
+## [1.8.1](https://github.com/SP-Packages/lintrc/compare/v1.8.0...v1.8.1) (2025-08-22)
+
+### Bug Fixes
+
+* **dependencies:** update dependencies ([a0b0da3](https://github.com/SP-Packages/lintrc/commit/a0b0da32a0a6afaac96c803204bb368e464f6698))
+* **dependencies:** update dependencies ([36fc39d](https://github.com/SP-Packages/lintrc/commit/36fc39d59851d429102d8961b3767c88490f7cda))
+* **lint-staged:** enforce strict mode for lintrc command ([5d1059f](https://github.com/SP-Packages/lintrc/commit/5d1059f495c309bc963ef149d37f1cc4b2f8aab2))
+* **release.config:** remove unused release rules and clean up config ([6abfbaa](https://github.com/SP-Packages/lintrc/commit/6abfbaa178a580dbaa9aa1989e56dc71a22543c0))
+* **scripts:** change postinstall to prepare for husky installation ([c149e0e](https://github.com/SP-Packages/lintrc/commit/c149e0ef77124b48893d814e3992dcb066f885e9))
+* **tools:** update composer commands to improve behavior and priority ([3a49017](https://github.com/SP-Packages/lintrc/commit/3a49017c3018fb484c803dbc51e13da8a118f7d1))
+
 ## [1.8.0](https://github.com/SP-Packages/lintrc/compare/v1.7.0...v1.8.0) (2025-08-22)
 
 ### Features
