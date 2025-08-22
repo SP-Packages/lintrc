@@ -15,7 +15,7 @@
       "command": "validate",
       "args": ["--no-interaction", "--strict"],
       "includeFiles": false,
-      "behavior": "warn",
+      "behavior": "error",
       "priority": 11
     },
     "CSPELL": {
@@ -56,7 +56,7 @@
       "type": "npm",
       "command": "npmPkgJsonLint .",
       "includeFiles": false,
-      "behavior": "warn",
+      "behavior": "error",
       "requires": "npm-package-json-lint",
       "priority": 12
     },
