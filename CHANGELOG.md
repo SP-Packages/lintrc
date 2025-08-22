@@ -1,3 +1,9 @@
+## [1.6.1](https://github.com/SP-Packages/lintrc/compare/v1.6.0...v1.6.1) (2025-08-22)
+
+### Bug Fixes
+
+* **lintrc:** change behavior of  verify commands to error back ([455cc72](https://github.com/SP-Packages/lintrc/commit/455cc727040cf7da8076dc947f0d391583ecbb1b))
+
 ## [1.6.0](https://github.com/SP-Packages/lintrc/compare/v1.5.3...v1.6.0) (2025-08-22)
 
 ### Features
