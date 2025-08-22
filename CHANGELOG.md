@@ -1,3 +1,11 @@
+## [1.7.0](https://github.com/SP-Packages/lintrc/compare/v1.6.1...v1.7.0) (2025-08-22)
+
+### Features
+
+* **lintrc:** add chalk as a dependency ([e3fcc84](https://github.com/SP-Packages/lintrc/commit/e3fcc842d25c35775bc6d4c3b65802544ae65d0b))
+* **output:** enhance output and new parameter for minimal output ([bc1cd34](https://github.com/SP-Packages/lintrc/commit/bc1cd34aa78ba56be07611759c22cb7f16bd4674))
+* **release:** add minimal output parameter ([ec14a01](https://github.com/SP-Packages/lintrc/commit/ec14a01164d804759d1aa1e7319183ff39270aed))
+
 ## [1.6.1](https://github.com/SP-Packages/lintrc/compare/v1.6.0...v1.6.1) (2025-08-22)
 
 ### Bug Fixes
