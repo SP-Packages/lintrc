@@ -116,7 +116,7 @@
   },
   "scripts": {
     "build": "tsc && esbuild dist/**/*.js --minify --outdir=dist --allow-overwrite --tree-shaking=true --platform=node",
-    "postinstall": "husky install",
+    "prepare": "husky",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:watch": "vitest --watch",
