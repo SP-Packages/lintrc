@@ -22,7 +22,9 @@ export type CommandResult = {
 export type LintRCOptions = {
   ext?: string[];
   config?: string;
+  strict?: boolean;
   quiet?: boolean;
+  minimal?: boolean;
   verbose?: boolean;
   skipComposer?: boolean;
   skipNpm?: boolean;
