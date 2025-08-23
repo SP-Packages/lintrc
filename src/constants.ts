@@ -8,6 +8,7 @@ export const DEFAULT_CONFIG: Config = {
     COMMITLINT: {
       title: 'Commit Lint',
       type: 'npm',
+      prefix: 'npx',
       command: 'commitlint',
       args: ['--from HEAD~1', '--to HEAD'],
       behavior: 'warn',
@@ -26,6 +27,7 @@ export const DEFAULT_CONFIG: Config = {
     CSPELL: {
       title: 'cSpell',
       type: 'npm',
+      prefix: 'npx',
       command: 'cspell',
       args: ['--no-progress', '--no-summary'],
       behavior: 'warn',
@@ -35,6 +37,7 @@ export const DEFAULT_CONFIG: Config = {
     ESLINT: {
       title: 'ESLint',
       type: 'npm',
+      prefix: 'npx',
       command: 'eslint',
       args: ['--fix'],
       behavior: 'error',
@@ -43,6 +46,7 @@ export const DEFAULT_CONFIG: Config = {
     MARKDOWNLINT: {
       title: 'Markdown Lint',
       type: 'npm',
+      prefix: 'npx',
       command: 'markdownlint',
       args: ['--fix'],
       behavior: 'warn',
@@ -51,6 +55,7 @@ export const DEFAULT_CONFIG: Config = {
     PHPCBF: {
       title: 'PHP Code Beautifier',
       type: 'composer',
+      prefix: 'vendor',
       command: 'phpcbf',
       behavior: 'warn',
       priority: 3
@@ -58,6 +63,7 @@ export const DEFAULT_CONFIG: Config = {
     PHPCS: {
       title: 'PHP Code Sniffer',
       type: 'composer',
+      prefix: 'vendor',
       command: 'phpcs',
       behavior: 'error',
       priority: 6
@@ -65,6 +71,7 @@ export const DEFAULT_CONFIG: Config = {
     PHPCSFIXER: {
       title: 'PHP Coding Standards Fixer',
       type: 'composer',
+      prefix: 'vendor',
       command: 'php-cs-fixer',
       args: ['fix', '--config=.php-cs-fixer.php'],
       behavior: 'error',
@@ -73,6 +80,7 @@ export const DEFAULT_CONFIG: Config = {
     PHPSTAN: {
       title: 'PHPStan',
       type: 'composer',
+      prefix: 'vendor',
       command: 'phpstan',
       args: ['analyze', '--error-format=raw'],
       behavior: 'error',
@@ -81,6 +89,7 @@ export const DEFAULT_CONFIG: Config = {
     PRETTIER: {
       title: 'Prettier',
       type: 'npm',
+      prefix: 'npx',
       command: 'prettier',
       args: ['--write'],
       behavior: 'warn',

@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import pLimit from 'p-limit';
 import { spawn } from 'child_process';
 import { Ora, Printer } from '../utils/logger.js';
-import { isToolAvailable } from '../utils/helper.js';
+import { buildCommand, isToolAvailable } from '../utils/helper.js';
 import { Command, Commands, CommandResult } from '../types/types.js';
 
 const CONCURRENCY_LIMIT = 4;
@@ -19,8 +19,7 @@ async function executeCommandBuffered(
   commandDetails: Command,
   spinner: Ora
 ): Promise<CommandResult> {
-  const { title, type, command, args, files, behavior, requires } =
-    commandDetails;
+  const { title, type, command, behavior, requires } = commandDetails;
   spinner.text = title;
   if (
     (requires && !isToolAvailable(requires)) ||
@@ -49,10 +48,7 @@ async function executeCommandBuffered(
     }
   }
 
-  let cmd = type === 'npm' ? `npx --no-install ${command}` : command;
-  cmd = type === 'composer' ? `vendor/bin/${command}` : cmd;
-  if (args?.length) cmd += ` ${args.join(' ')}`;
-  if (files?.length) cmd += ` ${files.join(' ')}`;
+  const cmd = buildCommand(commandDetails);
 
   return new Promise((resolve) => {
     const childProcess = spawn(cmd, {

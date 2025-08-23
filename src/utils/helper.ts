@@ -2,7 +2,7 @@
 import { existsSync } from 'fs';
 import { Printer } from './logger.js';
 import { execSync } from 'child_process';
-import { CommandResult, Commands, Config } from '../types/types.js';
+import { CommandResult, Command, Commands, Config } from '../types/types.js';
 
 type ComposerCommand = {
   name: string;
@@ -21,6 +21,8 @@ type NpmCommandInfo = {
 type NpmHelp = {
   commands: Record<string, NpmCommandInfo>;
 };
+
+type ExecStrategy = 'npm' | 'npx' | 'composer' | 'vendor';
 
 /**
  * Checks if the given object is a ComposerList.
@@ -60,6 +62,15 @@ const toolCache = new Map<string, boolean>();
  * Initialized as null to indicate no files cached yet.
  */
 let cachedGitFiles: string[] | null = null;
+
+/**
+ * Determines the execution strategy for a given tool.
+ * @param tool - The tool to determine the strategy for
+ * @returns The execution strategy: "npx", "npm", "composer", "vendor
+ */
+function getExecStrategy(tool: Command): ExecStrategy {
+  return tool.prefix ?? (tool.type === 'npm' ? 'npm' : 'composer');
+}
 
 /**
  * Checks if the given tool is available in the system.
@@ -178,6 +189,38 @@ export function isToolAvailable(
 
   toolCache.set(cacheKey, false);
   return false;
+}
+
+/**
+ * Determines the execution strategy for a given tool.
+ * @param tool - The tool to determine the strategy for
+ * @returns The execution strategy: "npx", "npm", "composer", "vendor
+ */
+export function buildCommand(tool: Command): string {
+  const exec = getExecStrategy(tool);
+
+  let cmd: string;
+  switch (exec) {
+    case 'npx':
+      cmd = `npx ${tool.command}`;
+      break;
+    case 'npm':
+      cmd = `npm ${tool.command}`;
+      break;
+    case 'composer':
+      cmd = `composer ${tool.command}`;
+      break;
+    case 'vendor':
+      cmd = `vendor/bin/${tool.command}`;
+      break;
+    default:
+      cmd = tool.command;
+  }
+
+  if (tool.args?.length) cmd += ` ${tool.args.join(' ')}`;
+  if (tool.files?.length) cmd += ` ${tool.files.join(' ')}`;
+
+  return cmd.trim();
 }
 
 /**

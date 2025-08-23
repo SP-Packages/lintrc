@@ -1,5 +1,6 @@
 export type Command = {
   title: string;
+  prefix?: 'npx' | 'npm' | 'composer' | 'vendor';
   command: string;
   type: 'composer' | 'npm';
   behavior: 'warn' | 'error';

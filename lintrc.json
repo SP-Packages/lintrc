@@ -3,6 +3,7 @@
     "COMMITLINT": {
       "title": "Commit Lint",
       "type": "npm",
+      "prefix": "npx",
       "command": "commitlint",
       "args": ["--from=origin/main", "--to=HEAD"],
       "behavior": "warn",
@@ -21,6 +22,7 @@
     "CSPELL": {
       "title": "cSpell",
       "type": "npm",
+      "prefix": "npx",
       "command": "cspell",
       "args": ["--no-progress", "--no-summary"],
       "behavior": "warn",
@@ -30,6 +32,7 @@
     "DEPCHECK": {
       "title": "DepCheck",
       "type": "npm",
+      "prefix": "npx",
       "command": "depcheck",
       "behavior": "warn",
       "includeFiles": false,
@@ -38,6 +41,7 @@
     "ESLINT": {
       "title": "ESLint",
       "type": "npm",
+      "prefix": "npx",
       "command": "eslint",
       "args": ["--fix"],
       "behavior": "error",
@@ -46,6 +50,7 @@
     "MARKDOWNLINT": {
       "title": "Markdown Lint",
       "type": "npm",
+      "prefix": "npx",
       "command": "markdownlint",
       "args": ["--fix"],
       "behavior": "warn",
@@ -54,6 +59,7 @@
     "NPM_VERIFY": {
       "title": "Verifying NPM Package",
       "type": "npm",
+      "prefix": "npx",
       "command": "npmPkgJsonLint .",
       "includeFiles": false,
       "behavior": "error",
@@ -63,6 +69,7 @@
     "PHPCBF": {
       "title": "PHP Code Beautifier",
       "type": "composer",
+      "prefix": "vendor",
       "command": "phpcbf",
       "behavior": "warn",
       "priority": 3
@@ -70,6 +77,7 @@
     "PHPCS": {
       "title": "PHP Code Sniffer",
       "type": "composer",
+      "prefix": "vendor",
       "command": "phpcs",
       "behavior": "error",
       "priority": 6
@@ -77,6 +85,7 @@
     "PHPCSFIXER": {
       "title": "PHP Coding Standards Fixer",
       "type": "composer",
+      "prefix": "vendor",
       "command": "php-cs-fixer",
       "args": ["fix", "--config=.php-cs-fixer.php"],
       "behavior": "error",
@@ -85,6 +94,7 @@
     "PHPSTAN": {
       "title": "PHPStan",
       "type": "composer",
+      "prefix": "vendor",
       "command": "phpstan",
       "args": ["analyze", "--error-format=raw"],
       "behavior": "error",
@@ -93,6 +103,7 @@
     "PRETTIER": {
       "title": "Prettier",
       "type": "npm",
+      "prefix": "npx",
       "command": "prettier",
       "args": ["--write"],
       "behavior": "warn",
