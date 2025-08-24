@@ -117,6 +117,11 @@ The `TOOLS` section defines the linters and their configurations. Each tool has 
 
 - `title`: The display name of the tool.
 - `type`: The type of package manager used (`npm` or `composer`).
+- `prefix`: Specifies how the tool is invoked:
+  - `"npm"`: For npm subcommands (can be omitted if `type` is `"npm"`, as it's the default).
+  - `"npx"`: For npm custom binaries (installed in `node_modules/.bin`).
+  - `"composer"`: For composer subcommands (can be omitted if `type` is `"composer"`, as it's the default).
+  - `"vendor"`: For composer custom binaries (installed in `vendor/bin`).
 - `command`: The command to run the linter.
 - `args`: An array of arguments to pass to the command.
 - `behavior`: The behavior of the tool (`error` or `warn`).
@@ -130,6 +135,7 @@ Example:
     "CSPELL": {
       "title": "cSpell",
       "type": "npm",
+      "prefix": "npx",
       "command": "cspell",
       "args": ["--no-progress", "--no-summary"],
       "behavior": "warn",
@@ -138,6 +144,7 @@ Example:
     "ESLINT": {
       "title": "ESLint",
       "type": "npm",
+      "prefix": "npx",
       "command": "eslint",
       "args": ["--fix"],
       "behavior": "error",
@@ -146,6 +153,7 @@ Example:
     "PHPCS": {
       "title": "PHP Code Sniffer",
       "type": "composer",
+      "prefix": "vendor",
       "command": "phpcs",
       "behavior": "error",
       "priority": 3
@@ -153,6 +161,7 @@ Example:
     "PRETTIER": {
       "title": "Prettier",
       "type": "npm",
+      "prefix": "npx",
       "command": "prettier",
       "args": ["--write"],
       "behavior": "error",
