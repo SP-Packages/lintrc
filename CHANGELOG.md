@@ -1,3 +1,14 @@
+## [2.0.0](https://github.com/SP-Packages/lintrc/compare/v1.8.1...v2.0.0) (2025-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* **release:** improve tool deduction and execution strategy
+
+### Features
+
+* **executor:** refactor command execution and add buildCommand utility ([2e0cdc6](https://github.com/SP-Packages/lintrc/commit/2e0cdc65e63ca1f79f288ac79ec5e95dd3c069fa))
+* **release:** improve tool deduction and execution strategy ([633505a](https://github.com/SP-Packages/lintrc/commit/633505a688231a4dd117bfada5f13abddfd38932))
+
 ## [1.8.1](https://github.com/SP-Packages/lintrc/compare/v1.8.0...v1.8.1) (2025-08-22)
 
 ### Bug Fixes
